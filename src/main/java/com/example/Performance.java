@@ -14,6 +14,7 @@ public class Performance {
 	static String agent_resource=ProvTrack.bbox_ns+"CarManufacturerServer";
 	
 	public static ResponseEntity calculatePerformanceData(InsuranceData data){
+	ProvTrack track=new ProvTrack(data.getNamespace());
 		String act=ProvTrack.bbox_ns+"ActivityMan"+new Date().getTime();
 		String entity=data.getProv();
 		ResponseEntity en=new ResponseEntity();
@@ -31,29 +32,29 @@ public class Performance {
 		}
 		String perfEntity=ProvTrack.bbox_ns+"PerfEntityMan"+new Date().getTime();
 		String usage=ProvTrack.bbox_ns+"CarUsage"+new Date().getTime();
-		ProvTrack.addStatement(act+" "+ProvTrack.type+ProvTrack.Activity);
-		ProvTrack.addStatement(act+" "+ProvTrack.used+entity);
+		track.addStatement(act+" "+ProvTrack.type+ProvTrack.Activity);
+		track.addStatement(act+" "+ProvTrack.used+entity);
 		
 		
-		ProvTrack.addStatement(perfEntity+" "+ProvTrack.type +ProvTrack.Performance);
-		ProvTrack.addStatement(perfEntity+" "+ProvTrack.type +ProvTrack.PersonalData);
-		ProvTrack.addStatement(perfEntity+" "+ProvTrack.type +ProvTrack.Entity);
-		ProvTrack.addStatement(perfEntity+" "+ProvTrack.description+"\\\"Engine performance data\\\"^^xsd:string");
+		track.addStatement(perfEntity+" "+ProvTrack.type +ProvTrack.Performance);
+		track.addStatement(perfEntity+" "+ProvTrack.type +ProvTrack.PersonalData);
+		track.addStatement(perfEntity+" "+ProvTrack.type +ProvTrack.Entity);
+		track.addStatement(perfEntity+" "+ProvTrack.description+"\\\"Engine performance data\\\"^^xsd:string");
 
-		ProvTrack.addStatement(usage+" "+ProvTrack.entity +entity);
+		track.addStatement(usage+" "+ProvTrack.entity +entity);
 		
-		ProvTrack.addStatement(usage+" "+ProvTrack.type+ProvTrack.Usage);
-		ProvTrack.addStatement(usage+" "+ProvTrack.purpose+"\\\"Using accelerometer data to calculate how the engine performs\\\"^^xsd:string");
-		ProvTrack.addStatement(act+" "+ProvTrack.qualifiedUsage+ usage);
-		ProvTrack.addStatement(perfEntity+" "+ProvTrack.wasGeneratedBy+act);
+		track.addStatement(usage+" "+ProvTrack.type+ProvTrack.Usage);
+		track.addStatement(usage+" "+ProvTrack.purpose+"\\\"Using accelerometer data to calculate how the engine performs\\\"^^xsd:string");
+		track.addStatement(act+" "+ProvTrack.qualifiedUsage+ usage);
+		track.addStatement(perfEntity+" "+ProvTrack.wasGeneratedBy+act);
 		
 		// ADD GENERATION MAYBE 
 		
-		ProvTrack.addStatement(act+" "+ProvTrack.wasAssociatedWith + agent_resource);
+		track.addStatement(act+" "+ProvTrack.wasAssociatedWith + agent_resource);
 	
 		en.setProvdata(perfEntity);
 		
-		ProvTrack.sendProv();
+		track.sendProv();
 		return en;
 		
 		
