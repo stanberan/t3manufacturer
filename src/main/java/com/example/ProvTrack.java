@@ -16,7 +16,7 @@ public class ProvTrack {
 	static  String ttt_ns="ttt:";static String ttt_prefix="http://t3.abdn.ac.uk/ontologies/t3.owl#";
 	static  String prov_ns="prov:";static String prov_prefix="http://www.w3.org/ns/prov#";
 	public static String bbox_ns="bbox:";
-	static String host="crowddata.abdn.ac.uk";
+	static String host="t3.abdn.ac.uk";
 	String devid;
 	String bbox_prefix;
 	ArrayList<String> provTrack=new ArrayList<String>();

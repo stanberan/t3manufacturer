@@ -14,7 +14,7 @@ public class Performance {
 	static String agent_resource=ProvTrack.bbox_ns+"CarManufacturerServer";
 	
 	public static ResponseEntity calculatePerformanceData(InsuranceData data){
-	ProvTrack track=new ProvTrack(data.getNamespace());
+	ProvTrack track=new ProvTrack(data.getDevid());
 		String act=ProvTrack.bbox_ns+"ActivityMan"+new Date().getTime();
 		String entity=data.getProv();
 		ResponseEntity en=new ResponseEntity();

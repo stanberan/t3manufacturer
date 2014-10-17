@@ -4,12 +4,12 @@ public class InsuranceData {
 
 	String prov;
 	int highTurns;
-	String namespace;
-	public String getNamespace(){
-		return namespace;
+	String devid;
+	public String getDevid(){
+		return devid;
 	}
-	public void setNamespace(String namespace){
-		this.namespace=namespace;
+	public void setDevid(String namespace){
+		this.devid=namespace;
 	}
 	public String getProv() {
 		return prov;
